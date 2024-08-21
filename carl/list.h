@@ -109,6 +109,27 @@ public:
         }
         return curA;
     }
+
+    // 142.环形链表II
+    ListNode *detectCycle(ListNode *head) {
+        ListNode *dummyHead = new ListNode(0, head);
+        ListNode *fast = dummyHead;
+        ListNode *slow = dummyHead;
+        do {
+            if (fast == nullptr || fast->next == nullptr) {
+                return NULL;
+            }
+            fast = fast->next->next;
+            slow = slow->next;
+        } while (fast != slow);
+        slow = dummyHead;
+        do {
+            fast = fast->next;
+            slow = slow->next;
+        } while (fast != slow);
+        return fast;
+    }
+
 };
 
 // 707. 设计链表
