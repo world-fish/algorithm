@@ -1,0 +1,5 @@
+# ninja log v6
+10	641	7455160451305901	CMakeFiles/study.dir/main.cpp.obj	7cb075290549b256
+12	1648	7450619149068047	CMakeFiles/study.dir/hello_world.cpp.obj	d7e04a5da8754e13
+4	278	7455180976069896	build.ninja	bc5d9eb64089a17d
+642	818	7455160457633352	study.exe	a67e02c70de80f65
