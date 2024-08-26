@@ -7,4 +7,5 @@ add_executable(study
         main.cpp
         carl/array.h
         carl/list.h
+        carl/hash.h
 )
