@@ -8,4 +8,5 @@ add_executable(study
         carl/array.h
         carl/list.h
         carl/hash.h
+        carl/string.h
 )
