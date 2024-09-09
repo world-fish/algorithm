@@ -9,4 +9,6 @@ add_executable(study
         carl/list.h
         carl/hash.h
         carl/string.h
+        carl/stacksAndQueues.h
+        carl/binaryTree.h
 )
