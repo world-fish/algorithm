@@ -163,4 +163,21 @@ public:
         }
         cout << min_dif << endl;
     }
+
+    // 69. x 的平方根
+    int mySqrt(int x) {
+        int left = 1;
+        int right = x / 2 + 1;
+        int mid;
+        int ans = 0;
+        while (left <= right) {
+            mid = left + (right - left) / 2;
+            long long temp = (long long) mid * mid;
+            if (temp <= x) {
+                ans = mid;
+                left = ++mid;
+            } else if (temp > x) right = --mid;
+        }
+        return ans;
+    }
 };
