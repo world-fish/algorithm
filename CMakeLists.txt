@@ -11,4 +11,6 @@ add_executable(study
         carl/string.h
         carl/stacksAndQueues.h
         carl/binaryTree.h
+        carl/graph.h
+        marscode/marscode.h
 )

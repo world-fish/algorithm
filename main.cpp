@@ -1,45 +1,50 @@
-#include<bits/stdc++.h>
-#include "carl/binaryTree.h"
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-// 层序遍历输出二叉树
-void printTree(TreeNode *root) {
-    if (!root) {
-        cout << "Empty tree" << endl;
-        return;
+int main() {
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+
+    // 读取数组
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
     }
 
-    queue<TreeNode *> q;
-    q.push(root);
-    while (!q.empty()) {
-        int levelSize = q.size();
+    // 计算目标和
+    long long targetSum = n * (n + 1) / 2;
+    long long currentSum = 0;
 
-        // 输出当前层的节点
-        for (int i = 0; i < levelSize; ++i) {
-            TreeNode *node = q.front();
-            q.pop();
+    // 当前数组和
+    for (int x: arr) {
+        currentSum += x;
+    }
 
-            if (node) {
-                cout << node->val << " ";
-                q.push(node->left);
-                q.push(node->right);
-            } else {
-                cout << "null ";
+    // 大于目标的数和小于目标的数
+    long long excess = 0; // 需减少的量
+    long long deficit = 0; // 需增加的量
+
+    // 计算每个数与目标数的差值
+    for (int i = 1; i <= n; ++i) {
+        auto it = find(arr.begin(), arr.end(), i);
+        if (it == arr.end()) { // 如果目标数不在数组中
+            deficit += i; // 需要增加的量
+        } else {
+            if (*it > i) {
+                excess += (*it - i);
             }
         }
-        cout << endl; // 换行表示新的一层
     }
-}
 
-int main() {
+    if (currentSum < targetSum) {
+        cout << -1 << endl; // 总和小于目标和，无法变成有效排列
+    } else {
+        // 最小操作数为需要增加的量
+        cout << max(excess, deficit) << endl; // 转移数值的最小操作次数
+    }
 
-    BinaryTree BTree;
-
-    vector<int> vec = {-10, -3, 0, 5, 9};
-
-    TreeNode *root = BTree.sortedArrayToBST(vec);
-
-    printTree(root);
-
+    return 0;
 }
